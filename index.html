@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Image Comparer</title>
+    <link href="src/css/default.css?n=1" rel="stylesheet" />
+    <style data="slider" type="text/css"></style>
+</head>
+
+<body>
+    <div id="container" class="container">
+        <h id='imglabel1'>Drop File To Change</h>
+        <h id='imglabel2'>Drop File To Change</h>
+        <h id='imglabel3'>Drop File To Change<br>Click Me To Toggle Difference / This Image</h>
+        <img id="image1" src='resources/image_left.jpg'>
+        <img id="image2" src='resources/image_middle.jpg'>
+        <img id="image3" src='resources/image_right.jpg'>
+        <input type="button" , class="button" , id="image3Button">
+        <div id="overlap_div">
+            <img id="overlap1" src='resources/image_left.jpg'>
+            <img id="overlap2" src='resources/image_middle.jpg'>
+            <img id="overlap3" src='resources/image_right.jpg'>
+            <img id="difference">
+            <canvas id="diffDrawer" src='resources/image_left.jpg'></canvas>
+            <img id="rectangle">
+            <canvas id="rectDrawer" src='resources/image_left.jpg'></canvas>
+        </div>
+
+        <h id='sliderlabel1'>Alpha</h>
+        <h id='sliderlabel2'>Difference</h>
+        <input type="range" min="1" max="100" value="30" id="slider">
+        <input type="range" min="1" max="100" value="1" id="slider2">
+        <p id="helper">
+            ↑ Mouse Drag To Scale | Wheel Button To Move | Right Click To Download Difference ↑
+        </p>
+    </div>
+    <script type="module" src="src/index.js?n=1"></script>
+</body>
+
+</html>
