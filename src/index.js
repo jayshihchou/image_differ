@@ -656,5 +656,52 @@ function onKeyDown(e) {
 
 document.addEventListener('keydown', onKeyDown, false);
 
+
+const queryString = window.location.search;
+// console.log(queryString);
+const urlParams = new URLSearchParams(queryString);
+
+// console.log(urlParams);
+// console.log(urlParams.get('image1'));
+// console.log(urlParams.get('image2'));
+// console.log(urlParams.get('image3'));
+
+const image1File = urlParams.get('image1');
+const image2File = urlParams.get('image2');
+const image3File = urlParams.get('image3');
+
+function loadParamImage(file, target, overlapTarget) {
+  readImage(file, (src) => {
+    target.src = src;
+    overlapTarget.src = src;
+    if (target !== image3) {
+      if (target.complete) {
+        make_diff(image1.src, image2.src);
+      } else {
+        target.onload = () => {
+          make_diff(image1.src, image2.src);
+        }
+      }
+    } else {
+      if (target.complete) {
+        img3.src = src;
+        img3Ratio = img3.height / img3.width;
+        onResize();
+      } else {
+        target.onload = () => {
+          img3.src = src;
+          img3Ratio = img3.height / img3.width;
+          onResize();
+        }
+      }
+    }
+  });
+}
+
+if (image1File) loadParamImage(image1File, image1, overlap1);
+if (image2File) loadParamImage(image2File, image2, overlap2);
+if (image3File) loadParamImage(image3File, image3, overlap3);
+
+
 onResize();
 main();
